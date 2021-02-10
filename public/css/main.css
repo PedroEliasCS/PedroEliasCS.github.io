@@ -1,0 +1,103 @@
+html, body {
+  margin: 0px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+p {
+  font-size: 22px;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #30796f;
+}
+
+spawn {
+  color: #5adbca;
+  font-size: 30px;
+}
+
+teste{
+  color: #3755b89a;
+}
+
+canvas {
+  background-color: #5adbca69;
+  max-width: 100%
+}
+
+.narcissus h1 {
+  margin-top: 0
+}
+
+.noheight {
+  height: 0;
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+
+  color: #30796f;
+  /*background-color: #FFF8E1;*/
+}
+
+.down {
+  height: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.burritolike {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 8%;
+  padding-top: 8%;
+
+}
+
+.narcissus {
+  text-align: left;
+  margin-left: 8%;
+  margin-right: 8%;
+
+}
+
+h2 a{
+  color: #30796f
+}
+
+
+.footerstuff {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.addendum {
+    margin-bottom: 1%;
+    font-size: 12px;
+}
+
+
+.btn-principal {
+  font-family: StatsBold;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  border: none;
+  border-radius: 10vw;
+  width: 100px;
+  height: 50px;
+  background-color: #40a396;
+  position: relative;
+  left: 40%;
+  margin-top: 5%;
+  transition: all 0.32s;
+}
+
+.btn-principal:hover {
+  box-shadow: 0px 1px 10px #30796f;
+  transition-duration: 0.2s;
+}
