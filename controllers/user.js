@@ -35,4 +35,51 @@ controller.new = async (req, res) => {
     }
 }
 
+
+controller.getOne = async (req, res) => {
+    try {
+        let user = req.params
+        // faz a busca no parametros do link de acesso
+        // faz a leitura da informação buscada
+
+        let obj = await User.findById(user.id)
+        // o id seŕa passado 
+        // busca no banco de dados
+
+        if (obj) res.send(obj)
+        else res.status(404).end()
+
+
+    } catch (error) {
+        console.log(error)
+        res.send(500).send(error)
+    }
+}
+
+controller.update = async (req, res) => {
+    try {
+        const user = req.body
+
+        if (user.email) {
+            let checkEmail = await User.findOne({
+                "email": user.email
+            })
+
+            if (checkEmail) {
+                res.status(406).send("email já cadastrado")
+                return
+            }
+        }
+
+        let obj = await User.findByIdAndUpdate(id, req.body)
+
+        if (obj) res.status(204).end()
+        else res.status(404).end()
+    } catch (err) {
+        console.error(err)
+        res.status(500).end()
+    }
+}
+
+
 module.exports = controller
