@@ -15,15 +15,7 @@ const db = require('./config/database')
 db(`mongodb+srv://${dbuser}:${dbpass}@cluster0.cc1xi.gcp.mongodb.net/${dbname}?retryWrites=true&w=majority`)
 
 var app = express();
-
-//
-//{
-    //format: 'dev', 
-  //  stream: fs.createWriteStream('app.log', {'flags': 'w'}
-//
-app.use(logger({
-  format: 'dev',
-}));
+app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -32,12 +24,14 @@ app.set('views', path.join(__dirname, 'public'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html') // seta html como render padrão
 
-var home = require('./routes/index');
-app.use('/', home);
+//let indexRouter = require('./routes/index');
+//app.use('/', indexRouter);
+
+let user = require('./routes/user')
+app.use('/user', user)
 
 
-let calculadora = require('./routes/calculadora');
-const { fstat } = require('fs');
-app.use('/', calculadora)
+//let calculadora = require('./routes/calculadora');
+//app.use('/calculadora', calculadora)
 
 module.exports = app;
