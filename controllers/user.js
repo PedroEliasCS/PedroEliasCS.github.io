@@ -81,5 +81,9 @@ controller.update = async (req, res) => {
     }
 }
 
+controller.list = (req, res) => {
+    res.status(404).send("invalid id")
+}
+
 
 module.exports = controller

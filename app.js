@@ -30,6 +30,8 @@ app.set('view engine', 'html') // seta html como render padrão
 let user = require('./routes/user')
 app.use('/user', user)
 
+let category = require('./routes/category')
+app.use('/category', category)
 
 //let calculadora = require('./routes/calculadora');
 //app.use('/calculadora', calculadora)
