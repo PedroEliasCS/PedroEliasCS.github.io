@@ -17,11 +17,6 @@ const schema = mongoose.Schema({
         type: String,
         required: true
     },
-    author: {
-        type: mongoose.ObjectId,
-        ref: "Adm",
-        required: true
-    },
     category: {
         type: mongoose.ObjectId,
         ref: "Category",
