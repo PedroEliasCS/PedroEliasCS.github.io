@@ -12,18 +12,31 @@ const schema = mongoose.Schema({
         type: String,
         required: true
     },
-    slug: {
-        // codigo de rastreio
+    example: {
+        // exemplos resulução exercicio
         type: String,
         required: true
+    },
+    formula: {
+        type: String,
+        required: true
+    },
+    infoFormula: {
+        type: String,
+        require: true
     },
     category: {
         type: mongoose.ObjectId,
         ref: "Category",
         required: true
-    }
+    },
+    slug: {
+        // codigo de rastreio
+        type: String,
+        required: true
+    },
 })
 
 schema.plugin(mongoosePaginate)
 
-module.exports = mongoose.model("Article", schema, "articles")
+module.exports = mongoose.model("Calculations", schema, "calculation")

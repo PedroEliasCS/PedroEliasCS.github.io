@@ -33,6 +33,8 @@ app.use('/user', user)
 let category = require('./routes/category')
 app.use('/category', category)
 
+let calculation = require('./routes/calculation')
+app.use('/calculation', calculation)
 //let calculadora = require('./routes/calculadora');
 //app.use('/calculadora', calculadora)
 
