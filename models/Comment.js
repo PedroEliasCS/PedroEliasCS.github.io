@@ -21,7 +21,10 @@ const schema = mongoose.Schema({
         ref: "Calculation",
         required: true
     },
-    
+    slug: {
+        required: true,
+        required: String
+    }
 })
 
 schema.plugin(mongoosePaginate)
