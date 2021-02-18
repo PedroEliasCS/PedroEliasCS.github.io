@@ -6,7 +6,12 @@ const schema = mongoose.Schema({
         // userName do comentario
         type: mongoose.ObjectId,
         ref: "User",
+        // nome do usuario
         required: true
+    },
+    slug: {
+        required: true,
+        type: String
     },
     comment: {
         type: String,
@@ -14,17 +19,14 @@ const schema = mongoose.Schema({
     },
     date: {
         type: String,
-        require: true
     },
     calculation: {
         type: mongoose.ObjectId,
         ref: "Calculation",
+        // nome do calculo
         required: true
     },
-    slug: {
-        required: true,
-        required: String
-    }
+
 })
 
 schema.plugin(mongoosePaginate)

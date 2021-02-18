@@ -50,7 +50,7 @@ controller.getPage = async (req, res) => {
 
 controller.getOne = async (req, res) => {
     const id = req.params.id
-    let obj = await Calculation.findById(id)
+    let obj = await Calculation.findById(id).populate('category', "title")
 
     if (obj) res.send(obj)
     else res.status(404).end()

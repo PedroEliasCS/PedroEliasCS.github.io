@@ -27,6 +27,7 @@ const schema = mongoose.Schema({
     },
     category: {
         type: mongoose.ObjectId,
+        // nome da categoria
         ref: "Category",
         required: true
     },

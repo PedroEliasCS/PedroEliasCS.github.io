@@ -1,13 +1,16 @@
 const slugify = require('slugify')
-const { findByIdAndUpdate } = require("../models/Comment")
+//const { findByIdAndUpdate } = require("../models/Comment")
 const Comment = require("../models/Comment")
 
 const controller = {}
 
+
 controller.new = async (req, res) => {
     try {
         let comment = req.body
-        comment.slug = slugify(comment.title)
+        comment.date = new Date()
+        comment.slug = slugify(comment.comment)
+
         await Comment.create(comment)
         res.status(201).end()
     }
@@ -31,7 +34,7 @@ controller.list = async (req, res) => {
 
 controller.getOne = async (req, res) => {
     const id = req.params.id
-    let obj = await Comment.findById(id)
+    let obj = await Comment.findById(id).populate("user", "name").populate("calculation", "title")
 
     if (obj) res.send(obj)
     else res.status(404).end()
