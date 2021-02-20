@@ -34,6 +34,7 @@ router.get("/:slug/:page", async (req, res) => {
         } else {
             offset = (parseInt(page) - 1) * skip
         }
+        
         vet = vet.slice(offset, offset + skip)
         res.send(vet)
     } catch (err) {

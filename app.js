@@ -24,8 +24,17 @@ app.set('views', path.join(__dirname, 'public'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html') // seta html como render padrão
 
-//let indexRouter = require('./routes/index');
-//app.use('/', indexRouter);
+
+
+// paginas do site abaixo
+
+let pags = require("./routes/index")
+app.use('/', pags)
+
+// fim das paginas do site
+
+
+// inicio dos crud's de DB
 
 let user = require('./routes/user')
 app.use('/user', user)
@@ -38,6 +47,9 @@ app.use('/calculation', calculation)
 
 let comment = require('./routes/comments')
 app.use('/comment', comment)
+
+const Category = require('./models/Category')
+const Calculation = require('./models/Calculation')
 
 app.get("/:slug", async (req, res) => {
     
@@ -54,9 +66,6 @@ app.get("/:slug", async (req, res) => {
         res.status(500).send(err)
     }
 })
-
-const Category = require('./models/Category')
-const Calculation = require('./models/Calculation')
 
 app.use("/pag/:slug/:page", async (req, res) => {
     try {
@@ -86,5 +95,6 @@ app.use("/pag/:slug/:page", async (req, res) => {
     }
 })
 
+// fim dos crud's de db
 
 module.exports = app;
