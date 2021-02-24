@@ -73,7 +73,7 @@ app.use("/pag/:slug/:page", async (req, res) => {
         let page = req.params.page
         //skip define o numero de elementos a serem exibidos
         let offset = 0
-        let skip = 3
+        let skip = 20
         let slug = req.params.slug
         let obj = await Category.findOne({
             "slug": slug
