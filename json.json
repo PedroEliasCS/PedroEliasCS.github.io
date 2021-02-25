@@ -1,4 +1,0 @@
-{
-    "_id": "6036e71accf6b51996200654",
-    "formula": "<p>R = <input id='volt' placeholder='Tensão em V'> / <input id='ampe' placeholder='Corrente em A'></p><button class='btn-principal' onclick='let v = document.getElementById(`volt`).value;let i = document.getElementById(`ampe`).value;alert(`aqui sua resposta : ` + v / i + `Ω`);'>calcular</button><br>"
-}
