@@ -1,4 +1,4 @@
-<!-- saved from url=(0027)http://omrelli.ug/#antigone -->
+
 <html>
 
 <head>
@@ -9,24 +9,56 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
 	<link href="./css/p.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<script src="./js/popup.js"></script>
+	<script src="./js/js.js"></script>
 </head>
 
 <body>
 	<canvas id="canvas" width="1822" height="812" style="width: 911px; height: 376px;"></canvas>
 	<div class="footer">
 
-		<div class="noheight"><az><img src="./down_brown.png" class="down" ></a>
-		</div><br>
+		<div class="noheight" id="a">
+			<az><img src="./down_brown.png" class="down"></a>
+		</div>
+
+	<br>
+			
+			<input type="checkbox" id="show">
+			<div class="container" >
+			  <label for="show" class="close-btn fas fa-times" title="close"></label>
+			  <div class="text">Cortador de pão</div>
+			  <form action="#">
+				<div class="data">
+				  <label>User Name</label>
+				  <input type="text" id="userName" required>
+				</div>
+				<div class="data">
+				  <label>Senha</label>
+				  <input type="password" id="password" required>
+				</div>
+				<div class="forgot-pass"><a href="#">Esqueceu a senha?</a></div>
+				<div class="btn">
+				  <div class="inner"></div>
+				  <button onclick="login()">login</button>
+				</div>
+				<div class="signup-link"><a href="#">Cadastrar</a></div>
+			  </form>
+			</div>
+		  </div>
+		  
+		 
 		<div class="burritolike">
+			
 			<div class="narcissus">
-
-
+				<button class="btn-login" > <label for="show"> Login </label></button>
 				<h1 id="antigone">A física e suas funcionalidades</h1>
+				
 				<h2>Eu sou <a href="https://www.instagram.com/pedro_eliascs/">Pedro Elias Costa <spawn></spawn></a></h2>
-				<p>E vou apresentar a vocês alguns calculos, que antes poderia ter tido dificuldade, mas esse
+				<p>E vou apresentar a vocês alguns cálculos, que antes poderia ter dificuldade, mas esse
 					não é mais um problema.</p>
 
-				<p>Logo abaixo há alguns opções que levará ao seu objetivo, sendo ele uma dúvida, uma fórmula ou até
+				<p>Logo abaixo há alguns opções que o levará ao seu objetivo, sendo ele uma dúvida, uma fórmula ou até
 					mesmo uma resposta para prova? <br> </p>
 
 				<br>
@@ -34,7 +66,7 @@
 						class="btn-principal">
 						<a href="/descricao">descrição</a>
 					</button></p>
-					
+
 				<br>
 				<p>Em busca de uma demonstração? Aqui é o lugar certo. <br><button class="btn-principal">
 						<a href="/exemplo">Exemplo</a>
@@ -49,6 +81,7 @@
 
 			</div>
 		</div>
+		
 		<div class="addendum">
 			Pedro Elias Costa Santos
 			------<a href="https://github.com/PedroEliasCS">github</a>----------

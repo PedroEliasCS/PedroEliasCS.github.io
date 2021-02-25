@@ -1,7 +1,16 @@
+if (process.env.NODE_ENV !== 'production') {
+
+    require('dotenv').config()
+}
+
+
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const passport = require('passport'); // passagem e armazenar passaportes 
+const flash = require('express-flash'); // memoeria rapida
+const session = require('express-session'); // regular as sessões 
 
 //Configurando variaveis de ambiente
 require('dotenv').config()
@@ -14,8 +23,24 @@ const dbpass = process.env.DBPASS
 const db = require('./config/database')
 db(`mongodb+srv://${dbuser}:${dbpass}@cluster0.cc1xi.gcp.mongodb.net/${dbname}?retryWrites=true&w=majority`)
 
+
+const initializePassport = require('./authentic/passport-config'); // inicia pasaporte
+initializePassport(
+    passport, // passando o passaporte para checagem 
+);
+
 var app = express();
 //app.use(logger('dev'));
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+// configuração das informações temporarias
+
+app.use(passport.initialize());
+// inicia o passaport 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -25,6 +50,19 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html') // seta html como render padrão
 
 
+app.use(flash());
+// define flash para uso
+
+
+//sessão de login
+app.post('/login', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login/register',
+    failureFlash: true
+}))
+ 
+let login = require('./routes/login')
+app.use('/login', login)
 
 // paginas do site abaixo
 
@@ -96,5 +134,15 @@ app.use("/pag/:slug/:page", async (req, res) => {
 })
 
 // fim dos crud's de db
+
+// funcao q faz a autenticação
+async function checkAuthenticated(req, res, next) {
+    // funcao que testa autenticacao
+    if (req.isAuthenticated()) {
+        return next()
+    }
+    // se n houver chave de autenticacao redirecionar ao login
+    res.redirect('/login');
+}
 
 module.exports = app;
