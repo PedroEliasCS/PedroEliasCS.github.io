@@ -4,15 +4,17 @@ const users = require('../models/User'); // faz requisição da checagem do DB
 
 const getUserByEmail = async (userName) => { // sub func
     const findUser = userName
-
+    console.log('authentic login')
     let obj = await users.findOne({
-        'userName': findUser
+        'name': findUser
+
     })
 
     return obj
 };
 
 const getUserById = async (id) => { // sup func
+    console.log('authentic manutenção')
     let obj = await users.findOne({
         'id': id
     })
@@ -23,22 +25,22 @@ function inicialize(passport) {  // func main para authenticação
     console.log('dentro do inicialize')
     const authenticateUser = async (userName, password, done) => {
         // console.log(email,'  email')
-        //console.log('dentro do athenticate');
+        console.log('dentro do athenticate');
         const user = await getUserByEmail(userName);
 
-        //console.log(user, ' // user ')
+        console.log(user, ' // user ')
         if (user == null) {
             return done(null, false, {
                 message: ' não cadastrado'
             })
         }
-
+        
         try {
             if (await bcrypt.compare(password, user.password)) {
-              //  console.log('login com sucesso')
+                console.log('login com sucesso')
                 return done(null, user)
             } else {
-                //console.log('senha invalida')
+                console.log('senha invalida')
                 return done(null, false, {
                     message: ' senha invalidada'
                 })

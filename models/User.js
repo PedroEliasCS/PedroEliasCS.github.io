@@ -17,7 +17,6 @@ const schema = mongoose.Schema({
     },
     iconUser: {
         type: String, 
-        required: true
     },
 
 })

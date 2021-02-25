@@ -9,11 +9,11 @@ controller.new = async (req, res) => {
     try {
         let user = req.body
 
-        let emailTest = await User.findOne({
-            email: user.email
+        let nameTest = await User.findOne({
+            name: user.name
         })
-
-        if (!emailTest) {
+        console.log('dentro')
+        if (!nameTest) {
             // caso o email n esteja cadastrado
             // CADASTRA o maldito
 
@@ -26,7 +26,7 @@ controller.new = async (req, res) => {
 
             res.status(201).end()
         } else {
-            res.status(500).end()
+            res.status(500).send('já cadastrado')
         }
 
     } catch (error) {

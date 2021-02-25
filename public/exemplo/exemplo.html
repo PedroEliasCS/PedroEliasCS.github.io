@@ -21,31 +21,23 @@
 
 
 				<h1 id="antigone">Olá conhecedor </h1>
-				<h2>Encontrará abaixo nada mais nada menos que <spawn >EXEMPLOS</spawn></h2>
-				<p>Podem não estar corretoS, mas é como tudo na vida</p>
+				<h2>Encontrará abaixo nada mais, nada menos que <spawn >EXEMPLOS</spawn></h2>
+				<p>Podem não estar corretos, mas é como tudo na vida</p>
                 <p>ou na internet, será que está sendo enganado?</p>
                 <p>Não está sendo, conteudo seguro esse aqui <spawn >S2</spawn></p>
-                <button class="btn-principal"  onclick="trocaTela('ele')">Eletrica?</button><br>
-                <button class="btn-principal"  onclick="trocaTela('mec')">Mecanica?</button>
+                <button class="btn-principal"  onclick="trocaTela('eletrica')">Eletrica?</button><br>
+                <button class="btn-principal"  onclick="trocaTela('mecanica')">Mecanica?</button>
                 <br><br>
-                <div id="ele" style="display: none">
-                    <spawn style="  font-size: 40px; color: rgb(27, 27, 6);">---Eletrica----</spawn>
-                    <p>
-                        Quantos choques na vida Nicolas Tesla levou? <br>
-                        Não sei te responder essa, mas aposto que foi tão ousado quanto Benjamin Franklin com sua pipa.
-                        <br>
-                        professora Aqui entraria exemplos de calculos, uma nova divisão entre para ficar mais organizar, quando entrar mais conteudo.
-                    </p>
-                    
+                
+                <div id="eletrica" style="display: none">
+                    <spawn style="font-size: 40px; color: rgb(27, 27, 6);">---Eletrica----</spawn>
+                    <ul id="listaeletrica">                     
+                    </ul>
                 </div>
-                <div id="mec" style="display: none">
+                <div id="mecanica" style="display: none">
                     <spawn style="  font-size: 40px; color: rgb(27, 27, 6);">---Mecanica----</spawn>
-                    <p>
-                        Isaac Newton ainda vive entre nós? não <br> Mas suas ideais estão em todo o lugar
-                        <br>
-                        professora Aqui entraria exemplos de calculos, uma nova divisão entre para ficar mais organizar, quando entrar mais conteudo
-                    </p>
-                   
+                    <ul id="listamecanica">
+                    </ul>
                 </div>
 
 			</div>
@@ -56,23 +48,13 @@
 		</div>
     </div>
 
-    <script>
-        function trocaTela(entrando) {
-            document.getElementById(entrando).style.display = 'inline'
-            let possiveis = ['ele', 'mec']
-            for(let prop in possiveis){
-                if(possiveis[prop] == entrando) continue
-                document.getElementById(possiveis[prop]).style.display = 'none'
-            }
-        }
-
-    </script>
-
+    <script type="text/javascript" src="../js/ajax.js"></script>
 	<script type="text/javascript" src="./js/raf.js"></script>
 	<script type="text/javascript" src="./js/dimensions.js"></script>
 	<script type="text/javascript" src="./js/mouse.js"></script>
 	<script type="text/javascript" src="./js/particles.js"></script>
 	<script type="text/javascript" src="./js/main.js"></script>
+    <script type="text/javascript" src="./js/js.js"></script>
 
 
 </body>

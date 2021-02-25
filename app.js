@@ -3,7 +3,6 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 
-
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -31,6 +30,22 @@ initializePassport(
 
 var app = express();
 //app.use(logger('dev'));
+
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, 'public'));
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html') // seta html como render padrão
+app.use(express.urlencoded({
+    extended: false
+})); // para usar informações vindo por submit
+
+app.use(flash());
+// define flash para uso
+
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -41,23 +56,16 @@ app.use(session({
 app.use(passport.initialize());
 // inicia o passaport 
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.set('views', path.join(__dirname, 'public'));
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html') // seta html como render padrão
+app.use(passport.session());
+// atua como middleware para mudar o obj req e o valor de user vindo do cookie
 
-
-app.use(flash());
-// define flash para uso
 
 
 //sessão de login
+
 app.post('/login', passport.authenticate('local', {
     successRedirect: '/',
-    failureRedirect: '/login/register',
+    failureRedirect: '/SenhaInvalida',
     failureFlash: true
 }))
  
@@ -136,13 +144,5 @@ app.use("/pag/:slug/:page", async (req, res) => {
 // fim dos crud's de db
 
 // funcao q faz a autenticação
-async function checkAuthenticated(req, res, next) {
-    // funcao que testa autenticacao
-    if (req.isAuthenticated()) {
-        return next()
-    }
-    // se n houver chave de autenticacao redirecionar ao login
-    res.redirect('/login');
-}
 
 module.exports = app;

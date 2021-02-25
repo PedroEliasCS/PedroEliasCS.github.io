@@ -22,18 +22,14 @@ router.get('/register', (req, res) => {
 
 router.post('/register', async (req, res) => {
     try {
-        
         // faz a criptografia da senha
         const hashedPassword = await bcrypt.hash(req.body.password, 10) 
-
         let obj = {
             userName: req.body.name,
             email: req.body.email,
             password: hashedPassword
         }
-
         let returnUser = await userDB.checkAndCreactUser(obj)
-
         if (returnUser['error'] == false) {
             res.redirect('/login') // se deu tudo certo ir para o login
         } else {
@@ -45,4 +41,8 @@ router.post('/register', async (req, res) => {
     }
 })
 
+router.get('/authentic', async (req, res) => {
+    let a = req.isAuthenticated()
+    res.send(a)
+})
 module.exports = router;
