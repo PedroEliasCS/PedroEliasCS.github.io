@@ -1,3 +1,4 @@
+/*
 let paginas = {
     "eletrica": [],
     "mecanica": [],
@@ -79,11 +80,12 @@ function chamaBackend(categoria, pagina) {
     });
 }
 
+*/
+
 
 function trocaTela(entrando) {
     document.getElementById(entrando).style.display = 'inline'
-    let possiveis = ['eletrica', 'eletrica']
-    chamaBackend(entrando, 1)
+    let possiveis = ['eletrica', 'mecanica']
     for (let prop in possiveis) {
         if (possiveis[prop] == entrando) continue
         document.getElementById(possiveis[prop]).style.display = 'none'

@@ -6,6 +6,18 @@ html, body {
 
 p {
   font-size: 22px;
+  text-align: left;
+}
+
+
+titleCal {
+  font-size: 30px;
+  color: black;
+}
+textoDefinicao {
+  font-size: 25px;
+  text-align: center;
+
 }
 
 a {
